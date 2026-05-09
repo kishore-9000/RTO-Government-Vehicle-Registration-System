@@ -1,0 +1,1018 @@
+```html
+<!-- Save this file as: index.html -->
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Smart RTO Portal – India Vehicle Registration System</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Noto+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+<style>
+:root{
+  --navy:#0A2647;
+  --blue:#1565C0;
+  --sky:#1E88E5;
+  --orange:#E65100;
+  --amber:#FF9800;
+  --white:#fff;
+  --off:#F4F6FB;
+  --light:#E8EEF9;
+  --muted:#5B6B82;
+  --border:#C7D3E5;
+  --green:#2E7D32;
+  --red:#C62828;
+  --radius:14px;
+  --shadow:0 6px 30px rgba(10,38,71,.12);
+  --transition:.25s ease;
+}
+
+[data-theme="dark"]{
+  --navy:#0d1b2a;
+  --blue:#1E88E5;
+  --sky:#42A5F5;
+  --white:#EAF2FF;
+  --off:#08111f;
+  --light:#122033;
+  --muted:#9AB2CA;
+  --border:#213753;
+  --shadow:0 6px 24px rgba(0,0,0,.35);
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Noto Sans',sans-serif;
+  background:var(--off);
+  color:var(--navy);
+  overflow-x:hidden;
+}
+
+h1,h2,h3,h4{
+  font-family:'Rajdhani',sans-serif;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+button,input,select,textarea{
+  font-family:inherit;
+}
+
+.topbar{
+  background:var(--navy);
+  color:#d7e2f3;
+  padding:8px 20px;
+  font-size:.82rem;
+  display:flex;
+  justify-content:space-between;
+  flex-wrap:wrap;
+}
+
+header{
+  background:linear-gradient(135deg,#0A2647,#1565C0);
+  color:white;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  box-shadow:0 2px 15px rgba(0,0,0,.2);
+}
+
+.header-inner{
+  max-width:1300px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 20px;
+  flex-wrap:wrap;
+  gap:15px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.logo-icon{
+  width:58px;
+  height:58px;
+  background:white;
+  color:var(--blue);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:1.8rem;
+  font-weight:bold;
+}
+
+.logo-text h1{
+  font-size:1.5rem;
+}
+
+.logo-text p{
+  font-size:.8rem;
+  opacity:.8;
+}
+
+nav{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+}
+
+nav a{
+  padding:10px 15px;
+  border-radius:8px;
+  font-weight:600;
+  transition:var(--transition);
+}
+
+nav a:hover{
+  background:rgba(255,255,255,.15);
+}
+
+.nav-btn{
+  background:var(--orange);
+}
+
+.hero{
+  background:linear-gradient(135deg,#0A2647,#1043a0);
+  color:white;
+  padding:90px 20px;
+}
+
+.hero-inner{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
+}
+
+.hero h2{
+  font-size:3.5rem;
+  line-height:1.1;
+  margin-bottom:20px;
+}
+
+.hero p{
+  opacity:.85;
+  line-height:1.8;
+  margin-bottom:25px;
+}
+
+.hero-buttons{
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:14px 28px;
+  border:none;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  transition:var(--transition);
+}
+
+.btn-primary{
+  background:var(--orange);
+  color:white;
+}
+
+.btn-primary:hover{
+  transform:translateY(-3px);
+}
+
+.btn-outline{
+  background:transparent;
+  border:2px solid rgba(255,255,255,.4);
+  color:white;
+}
+
+.hero-card{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;
+  padding:40px;
+  text-align:center;
+  backdrop-filter:blur(10px);
+}
+
+.hero-card h3{
+  font-size:2rem;
+  margin-bottom:10px;
+}
+
+.hero-card p{
+  margin:0;
+}
+
+.section{
+  padding:80px 20px;
+}
+
+.section-inner{
+  max-width:1200px;
+  margin:auto;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:50px;
+}
+
+.section-title h2{
+  font-size:2.5rem;
+  margin-bottom:10px;
+}
+
+.section-title p{
+  color:var(--muted);
+}
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:25px;
+}
+
+.service-card{
+  background:var(--white);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  padding:30px;
+  text-align:center;
+  box-shadow:var(--shadow);
+  transition:var(--transition);
+}
+
+[data-theme="dark"] .service-card{
+  background:var(--light);
+}
+
+.service-card:hover{
+  transform:translateY(-6px);
+}
+
+.service-icon{
+  font-size:3rem;
+  margin-bottom:15px;
+}
+
+.service-card h3{
+  margin-bottom:10px;
+}
+
+.service-card p{
+  color:var(--muted);
+  font-size:.92rem;
+  line-height:1.7;
+}
+
+.form-section{
+  background:var(--light);
+}
+
+[data-theme="dark"] .form-section{
+  background:#08111f;
+}
+
+.form-card{
+  background:var(--white);
+  border-radius:20px;
+  padding:40px;
+  box-shadow:var(--shadow);
+}
+
+[data-theme="dark"] .form-card{
+  background:var(--light);
+}
+
+.form-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+.form-group{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.form-group.full{
+  grid-column:1/-1;
+}
+
+.form-group label{
+  font-weight:600;
+  color:var(--muted);
+}
+
+.form-control{
+  padding:14px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--off);
+  color:var(--navy);
+  outline:none;
+}
+
+[data-theme="dark"] .form-control{
+  background:#0f1b2c;
+  color:white;
+}
+
+.file-upload{
+  border:2px dashed var(--border);
+  border-radius:12px;
+  padding:30px;
+  text-align:center;
+  background:var(--off);
+}
+
+.form-buttons{
+  display:flex;
+  justify-content:flex-end;
+  gap:15px;
+  margin-top:20px;
+  flex-wrap:wrap;
+}
+
+.verify-box{
+  margin-top:40px;
+  background:var(--white);
+  padding:30px;
+  border-radius:20px;
+  box-shadow:var(--shadow);
+  display:none;
+}
+
+[data-theme="dark"] .verify-box{
+  background:var(--light);
+}
+
+.verify-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.number-plate{
+  background:black;
+  color:white;
+  padding:10px 20px;
+  border:4px solid gold;
+  border-radius:8px;
+  font-size:1.5rem;
+  font-weight:700;
+  letter-spacing:4px;
+}
+
+.status{
+  background:#E8F5E9;
+  color:var(--green);
+  padding:8px 16px;
+  border-radius:20px;
+  font-weight:700;
+}
+
+.verify-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+}
+
+.verify-item{
+  background:var(--off);
+  padding:18px;
+  border-radius:12px;
+}
+
+.verify-item span{
+  display:block;
+  color:var(--muted);
+  margin-bottom:6px;
+  font-size:.82rem;
+}
+
+.rules{
+  background:linear-gradient(135deg,#0A2647,#0d47a1);
+  color:white;
+}
+
+.rules-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:25px;
+}
+
+.rule-card{
+  background:rgba(255,255,255,.08);
+  padding:30px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.rule-card h3{
+  margin:15px 0 10px;
+}
+
+.rule-card p{
+  opacity:.8;
+  line-height:1.7;
+}
+
+.dashboard{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:25px;
+  margin-bottom:40px;
+}
+
+.dashboard-card{
+  background:var(--white);
+  border-radius:18px;
+  padding:25px;
+  box-shadow:var(--shadow);
+}
+
+[data-theme="dark"] .dashboard-card{
+  background:var(--light);
+}
+
+.dashboard-card h3{
+  font-size:2rem;
+  margin-top:10px;
+}
+
+.admin-panel{
+  background:var(--white);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+
+[data-theme="dark"] .admin-panel{
+  background:var(--light);
+}
+
+.admin-header{
+  background:var(--navy);
+  color:white;
+  padding:18px 25px;
+}
+
+.table-wrap{
+  overflow-x:auto;
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+}
+
+table th,
+table td{
+  padding:15px;
+  border-bottom:1px solid var(--border);
+  text-align:left;
+}
+
+table th{
+  background:var(--off);
+}
+
+footer{
+  background:var(--navy);
+  color:white;
+  padding:60px 20px 20px;
+}
+
+.footer-grid{
+  max-width:1200px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:40px;
+}
+
+.footer-col h3{
+  margin-bottom:15px;
+}
+
+.footer-col p,
+.footer-col li{
+  opacity:.8;
+  line-height:1.8;
+  font-size:.92rem;
+}
+
+.footer-bottom{
+  text-align:center;
+  margin-top:40px;
+  padding-top:20px;
+  border-top:1px solid rgba(255,255,255,.1);
+  opacity:.7;
+}
+
+.theme-toggle{
+  background:rgba(255,255,255,.12);
+  border:none;
+  color:white;
+  padding:10px 14px;
+  border-radius:30px;
+  cursor:pointer;
+}
+
+@media(max-width:900px){
+  .hero-inner,
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero h2{
+    font-size:2.5rem;
+  }
+}
+
+@media(max-width:600px){
+  nav{
+    justify-content:center;
+  }
+
+  .header-inner{
+    justify-content:center;
+  }
+
+  .hero{
+    text-align:center;
+  }
+
+  .hero-buttons{
+    justify-content:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="topbar">
+  <span>🇮🇳 Government of India – Ministry of Road Transport & Highways</span>
+  <span>📞 Helpline: 1800-200-1234</span>
+</div>
+
+<header>
+  <div class="header-inner">
+
+    <div class="logo">
+      <div class="logo-icon">🚘</div>
+
+      <div class="logo-text">
+        <h1>Smart RTO Portal</h1>
+        <p>Vehicle Registration & Verification System</p>
+      </div>
+    </div>
+
+    <nav>
+      <a href="#">Home</a>
+      <a href="#services">Services</a>
+      <a href="#registration">Registration</a>
+      <a href="#rules">Traffic Rules</a>
+      <a href="#admin">Dashboard</a>
+      <a href="#" class="nav-btn">Login</a>
+
+      <button class="theme-toggle" onclick="toggleTheme()">
+        🌙 Theme
+      </button>
+    </nav>
+
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+
+    <div>
+      <h2>Digital Vehicle Registration & Smart Verification System</h2>
+
+      <p>
+        Register vehicles, verify ownership, upload documents,
+        manage compliance, and monitor road safety with India's
+        modern RTO digital portal.
+      </p>
+
+      <div class="hero-buttons">
+        <button class="btn btn-primary">🚗 Register Vehicle</button>
+        <button class="btn btn-outline">🔍 Verify Number Plate</button>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <h3>📋 Vehicle Verification</h3>
+      <p>AI-Based Smart Number Plate & Face Identification System</p>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="services">
+  <div class="section-inner">
+
+    <div class="section-title">
+      <h2>RTO Services</h2>
+      <p>Fast digital government services for vehicle owners.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">🚘</div>
+        <h3>Vehicle Registration</h3>
+        <p>Register new vehicles online with smart document verification.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🪪</div>
+        <h3>Driving License</h3>
+        <p>Apply or renew driving licenses digitally.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>Number Plate Search</h3>
+        <p>Verify vehicle owner and registration status instantly.</p>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📄</div>
+        <h3>Insurance Status</h3>
+        <p>Check active insurance and pollution certificate details.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="section form-section" id="registration">
+  <div class="section-inner">
+
+    <div class="section-title">
+      <h2>Vehicle Registration Form</h2>
+      <p>Fill complete vehicle and owner details.</p>
+    </div>
+
+    <div class="form-card">
+
+      <div class="form-grid">
+
+        <div class="form-group">
+          <label>Owner Name</label>
+          <input type="text" class="form-control" placeholder="Enter owner name">
+        </div>
+
+        <div class="form-group">
+          <label>Vehicle Number</label>
+          <input type="text" class="form-control" placeholder="KA01AB1234">
+        </div>
+
+        <div class="form-group">
+          <label>Vehicle Brand</label>
+          <select class="form-control">
+            <option>Select Brand</option>
+            <option>Tata</option>
+            <option>Mahindra</option>
+            <option>Hyundai</option>
+            <option>Honda</option>
+            <option>Suzuki</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Vehicle Color</label>
+          <input type="text" class="form-control" placeholder="White">
+        </div>
+
+        <div class="form-group">
+          <label>Vehicle Price</label>
+          <input type="number" class="form-control" placeholder="₹ 8,00,000">
+        </div>
+
+        <div class="form-group">
+          <label>Date of Purchase</label>
+          <input type="date" class="form-control">
+        </div>
+
+        <div class="form-group">
+          <label>Number of Wheels</label>
+          <select class="form-control">
+            <option>Select</option>
+            <option>2 Wheeler</option>
+            <option>3 Wheeler</option>
+            <option>4 Wheeler</option>
+            <option>Heavy Vehicle</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Fuel Type</label>
+          <select class="form-control">
+            <option>Petrol</option>
+            <option>Diesel</option>
+            <option>Electric</option>
+            <option>CNG</option>
+          </select>
+        </div>
+
+        <div class="form-group full">
+          <label>Owner Address</label>
+          <textarea class="form-control" rows="4"></textarea>
+        </div>
+
+        <div class="form-group full">
+          <label>Upload Owner Face Identification</label>
+
+          <div class="file-upload">
+            📷 Upload Face Photo / Aadhaar Verification
+          </div>
+        </div>
+
+        <div class="form-group full">
+          <label>Upload Vehicle Image</label>
+
+          <div class="file-upload">
+            🚗 Upload Vehicle Front & Side Photos
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-buttons">
+        <button class="btn btn-outline" style="color:var(--navy)">
+          Reset
+        </button>
+
+        <button class="btn btn-primary" onclick="showVerification()">
+          Submit Registration
+        </button>
+      </div>
+
+      <div class="verify-box" id="verifyBox">
+
+        <div class="verify-header">
+          <div class="number-plate">KA01AB1234</div>
+          <div class="status">✔ Verified</div>
+        </div>
+
+        <div class="verify-grid">
+
+          <div class="verify-item">
+            <span>Owner Name</span>
+            <strong>Kishor Reddy</strong>
+          </div>
+
+          <div class="verify-item">
+            <span>Vehicle Brand</span>
+            <strong>Hyundai Creta</strong>
+          </div>
+
+          <div class="verify-item">
+            <span>Color</span>
+            <strong>White</strong>
+          </div>
+
+          <div class="verify-item">
+            <span>Insurance</span>
+            <strong>Active</strong>
+          </div>
+
+          <div class="verify-item">
+            <span>Pollution Certificate</span>
+            <strong>Valid</strong>
+          </div>
+
+          <div class="verify-item">
+            <span>Road Tax</span>
+            <strong>Paid</strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section rules" id="rules">
+  <div class="section-inner">
+
+    <div class="section-title">
+      <h2>Traffic Rules & Safety</h2>
+      <p>Follow traffic rules for safer roads in India.</p>
+    </div>
+
+    <div class="rules-grid">
+
+      <div class="rule-card">
+        <div style="font-size:2rem">🪖</div>
+        <h3>Helmet Mandatory</h3>
+        <p>Two-wheeler riders must wear helmets while driving.</p>
+      </div>
+
+      <div class="rule-card">
+        <div style="font-size:2rem">🚦</div>
+        <h3>Signal Compliance</h3>
+        <p>Follow traffic signals and lane discipline properly.</p>
+      </div>
+
+      <div class="rule-card">
+        <div style="font-size:2rem">🚫</div>
+        <h3>No Drunk Driving</h3>
+        <p>Driving under alcohol influence is punishable by law.</p>
+      </div>
+
+      <div class="rule-card">
+        <div style="font-size:2rem">📵</div>
+        <h3>No Mobile Usage</h3>
+        <p>Using mobile phones while driving is prohibited.</p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="admin">
+  <div class="section-inner">
+
+    <div class="section-title">
+      <h2>RTO Admin Dashboard</h2>
+      <p>Government monitoring and analytics panel.</p>
+    </div>
+
+    <div class="dashboard">
+
+      <div class="dashboard-card">
+        <div>🚘</div>
+        <h3>1,24,580</h3>
+        <p>Registered Vehicles</p>
+      </div>
+
+      <div class="dashboard-card">
+        <div>🪪</div>
+        <h3>84,210</h3>
+        <p>Active Driving Licenses</p>
+      </div>
+
+      <div class="dashboard-card">
+        <div>📄</div>
+        <h3>96%</h3>
+        <p>Insurance Compliance</p>
+      </div>
+
+      <div class="dashboard-card">
+        <div>🚨</div>
+        <h3>2,430</h3>
+        <p>Traffic Violations</p>
+      </div>
+
+    </div>
+
+    <div class="admin-panel">
+
+      <div class="admin-header">
+        Vehicle Registration Records
+      </div>
+
+      <div class="table-wrap">
+        <table>
+
+          <thead>
+            <tr>
+              <th>Vehicle No</th>
+              <th>Owner</th>
+              <th>Brand</th>
+              <th>Status</th>
+              <th>Insurance</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>KA01AB1234</td>
+              <td>Kishor Reddy</td>
+              <td>Hyundai</td>
+              <td>Verified</td>
+              <td>Active</td>
+            </tr>
+
+            <tr>
+              <td>KA05CD5678</td>
+              <td>Rahul Kumar</td>
+              <td>Tata Nexon</td>
+              <td>Pending</td>
+              <td>Active</td>
+            </tr>
+
+            <tr>
+              <td>KA09EF9876</td>
+              <td>Anjali Sharma</td>
+              <td>Honda City</td>
+              <td>Approved</td>
+              <td>Expired</td>
+            </tr>
+
+          </tbody>
+
+        </table>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<footer>
+
+  <div class="footer-grid">
+
+    <div class="footer-col">
+      <h3>Smart RTO Portal</h3>
+      <p>
+        India's advanced digital transport and vehicle registration platform.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h3>Quick Links</h3>
+
+      <ul>
+        <li>Vehicle Registration</li>
+        <li>Driving License</li>
+        <li>Insurance Verification</li>
+        <li>Traffic Rules</li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h3>Support</h3>
+
+      <ul>
+        <li>Email: support@rto.gov.in</li>
+        <li>Phone: 1800-200-1234</li>
+        <li>Working Hours: 9 AM - 6 PM</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Government of India – Ministry of Road Transport & Highways
+  </div>
+
+</footer>
+
+<script>
+function toggleTheme(){
+  const html = document.documentElement;
+
+  if(html.getAttribute("data-theme")==="dark"){
+    html.setAttribute("data-theme","light");
+  }else{
+    html.setAttribute("data-theme","dark");
+  }
+}
+
+function showVerification(){
+  document.getElementById("verifyBox").style.display="block";
+
+  window.scrollTo({
+    top:document.getElementById("verifyBox").offsetTop-100,
+    behavior:"smooth"
+  });
+}
+</script>
+
+</body>
+</html>
+```
